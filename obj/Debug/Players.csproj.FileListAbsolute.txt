@@ -1,0 +1,17 @@
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\bin\Debug\Players.exe.config
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\bin\Debug\Players.exe
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\bin\Debug\Players.pdb
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\bin\Debug\DryIoc.dll
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\bin\Debug\DryIoc.xml
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.csprojAssemblyReference.cache
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\MainWindow.g.cs
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\App.g.cs
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players_MarkupCompile.cache
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\MainWindow.baml
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.g.resources
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.Properties.Resources.resources
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.csproj.GenerateResource.cache
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.csproj.CoreCompileInputs.cache
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.csproj.CopyComplete
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.exe
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.pdb
