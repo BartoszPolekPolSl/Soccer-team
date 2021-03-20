@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Xml.Serialization;
 
 namespace Players
 {
@@ -11,12 +13,13 @@ namespace Players
     /// </summary>
     public partial class MainWindow : Window
     {
-        PlayersList _playerList = new PlayersList();
+        XmlSerializer xml;
+        PlayersList playerList = new PlayersList();
         public MainWindow()
         {
             
             InitializeComponent();
-            lb_players.ItemsSource = _playerList.playersList;
+            lb_players.ItemsSource = playerList.playersList;
             age_array();
             cb_age.ItemsSource = Age;
             
@@ -42,7 +45,7 @@ namespace Players
             {
 
                 Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value);
-                _playerList.AddPlayer(player);
+                playerList.AddPlayer(player);
             }  
 
             
@@ -58,7 +61,7 @@ namespace Players
             {
                 int index = lb_players.SelectedIndex;
                 lb_players.SelectedIndex -= 1;
-                _playerList.RemovePlayer(index);            
+                playerList.RemovePlayer(index);            
             }   
         }
 
@@ -72,7 +75,7 @@ namespace Players
             }
             else
             {
-                if (_playerList.playersList.Count==0)
+                if (playerList.playersList.Count==0)
                 {
                     MessageBox.Show("Lista jest pusta!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -82,13 +85,13 @@ namespace Players
                     if (lb_players.SelectedIndex == 0)
                     {
                         lb_players.SelectedIndex += 1;
-                        _playerList.ModifyPlayer(index, player);
+                        playerList.ModifyPlayer(index, player);
                         lb_players.SelectedIndex -= 1;
                     }
                     else
                     {
                         lb_players.SelectedIndex -= 1;
-                        _playerList.ModifyPlayer(index, player);
+                        playerList.ModifyPlayer(index, player);
                         lb_players.SelectedIndex += 1;
                     }
                 }
@@ -151,6 +154,14 @@ namespace Players
                 tb_fName.BorderThickness = new Thickness(1);
                 tb_fName.BorderBrush = mySolidColorBrush;
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            xml = new XmlSerializer(typeof(PlayersList));
+            TextWriter stream = new StreamWriter("Players.xml");
+            xml.Serialize(stream, playerList);
+            stream.Close();
         }
     }   
     

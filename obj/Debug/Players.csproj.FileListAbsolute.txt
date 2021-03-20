@@ -15,3 +15,19 @@ D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.csproj.CoreCompileInputs.c
 D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.csproj.CopyComplete
 D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.exe
 D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.pdb
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\bin\Debug\Players.exe.config
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\bin\Debug\Players.exe
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\bin\Debug\Players.pdb
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\bin\Debug\DryIoc.xml
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.csprojAssemblyReference.cache
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\MainWindow.baml
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\MainWindow.g.cs
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\App.g.cs
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players_MarkupCompile.cache
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.g.resources
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.Properties.Resources.resources
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.csproj.GenerateResource.cache
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.csproj.CoreCompileInputs.cache
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.csproj.CopyComplete
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.exe
+C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.pdb

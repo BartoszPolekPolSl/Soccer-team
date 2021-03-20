@@ -1,9 +1,14 @@
 ﻿using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 
 namespace Players
 {
-    class PlayersList
+    [XmlRoot("ListOfPlayers")]
+    public class PlayersList
     {
+        [XmlArray("Players")]
+
+        [XmlArrayItem("Player",typeof( Player))]
         public ObservableCollection<Player> playersList;
         public PlayersList()
         {
