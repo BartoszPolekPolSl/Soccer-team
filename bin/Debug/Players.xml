@@ -2,28 +2,10 @@
 <ListOfPlayers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Players>
     <Player>
-      <Fname>wevevw</Fname>
-      <Lname>ewrvwerv</Lname>
+      <Fname>bartosz </Fname>
+      <Lname>polek</Lname>
       <Age>20</Age>
-      <Weight>0</Weight>
-    </Player>
-    <Player>
-      <Fname>wevevw</Fname>
-      <Lname>ewrvwerv</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
-    </Player>
-    <Player>
-      <Fname>wevevw</Fname>
-      <Lname>ewrvwerv</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
-    </Player>
-    <Player>
-      <Fname>wevevw</Fname>
-      <Lname>ewrvwerv</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
+      <Weight>69.600000000000009</Weight>
     </Player>
   </Players>
 </ListOfPlayers>

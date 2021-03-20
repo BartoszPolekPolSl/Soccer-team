@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -19,6 +20,7 @@ namespace Players
         {
             
             InitializeComponent();
+            Deserialize();
             lb_players.ItemsSource = playerList.playersList;
             age_array();
             cb_age.ItemsSource = Age;
@@ -112,7 +114,8 @@ namespace Players
             {
                 string[] dataPlayer;
                 string player = lb_players.Items.GetItemAt(lb_players.SelectedIndex).ToString().Replace(",", "");
-                dataPlayer = player.Split(' ');
+                Regex space = new Regex("[ ]+");
+                dataPlayer = space.Replace(player, " ").Split(' ');
                 tb_fName.Text = dataPlayer[0];
                 tb_lName.Text = dataPlayer[1];
                 cb_age.SelectedItem = Convert.ToInt32(dataPlayer[3]);
@@ -162,6 +165,13 @@ namespace Players
             TextWriter stream = new StreamWriter("Players.xml");
             xml.Serialize(stream, playerList);
             stream.Close();
+        }
+
+        private void Deserialize()
+        {
+            xml = new XmlSerializer(typeof(PlayersList));
+            TextReader stream = new StreamReader("Players.xml");
+            playerList=(PlayersList)xml.Deserialize(stream);
         }
     }   
     
