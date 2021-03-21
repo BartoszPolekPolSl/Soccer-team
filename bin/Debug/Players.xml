@@ -2,34 +2,16 @@
 <ListOfPlayers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Players>
     <Player>
-      <Fname>dbfgbf</Fname>
-      <Lname>fgbfgbfgb</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
+      <Fname>bartosz</Fname>
+      <Lname>polek</Lname>
+      <Age>40</Age>
+      <Weight>101.5</Weight>
     </Player>
     <Player>
-      <Fname>dbfgbf</Fname>
-      <Lname>fgbfgbfgb</Lname>
+      <Fname>bartosz</Fname>
+      <Lname>v</Lname>
       <Age>20</Age>
-      <Weight>0</Weight>
-    </Player>
-    <Player>
-      <Fname>dbfgbf</Fname>
-      <Lname>fgbfgbfgbffff</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
-    </Player>
-    <Player>
-      <Fname>dbfgbf</Fname>
-      <Lname>fgbfgbfgb</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
-    </Player>
-    <Player>
-      <Fname>dbfgbf</Fname>
-      <Lname>fgbfgbfgb</Lname>
-      <Age>20</Age>
-      <Weight>0</Weight>
+      <Weight>9.3</Weight>
     </Player>
   </Players>
 </ListOfPlayers>

@@ -59,7 +59,7 @@ namespace Players
             {
                 MessageBox.Show("Wybierz pozycję, która chcesz usunąć z listy!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else
+            else if (MessageBox.Show("Czy chcesz usunąć wybranego piłkarza?", "Usuwanie piłkarza", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 int index = lb_players.SelectedIndex;
                 lb_players.SelectedIndex -= 1;
@@ -81,7 +81,7 @@ namespace Players
                 {
                     MessageBox.Show("Lista jest pusta!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                else
+                else if(MessageBox.Show("Czy chcesz zmodyfikować wybranego piłkarza?", "Modyfikowanie piłkarza", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value);
                     if (lb_players.SelectedIndex == 0)
@@ -112,6 +112,8 @@ namespace Players
             }
             else
             {
+                tb_fName.Foreground = Brushes.Black;
+                tb_lName.Foreground = Brushes.Black;
                 string[] dataPlayer;
                 string player = lb_players.Items.GetItemAt(lb_players.SelectedIndex).ToString().Replace(",", "");
                 Regex space = new Regex("[ ]+");
