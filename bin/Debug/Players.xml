@@ -2,16 +2,10 @@
 <ListOfPlayers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Players>
     <Player>
-      <Fname>bartosz</Fname>
-      <Lname>polek</Lname>
-      <Age>40</Age>
-      <Weight>101.5</Weight>
-    </Player>
-    <Player>
-      <Fname>bartosz</Fname>
-      <Lname>v</Lname>
-      <Age>20</Age>
-      <Weight>9.3</Weight>
+      <Fname>Bartosz</Fname>
+      <Lname>Polek</Lname>
+      <Age>32</Age>
+      <Weight>58.900000000000006</Weight>
     </Player>
   </Players>
 </ListOfPlayers>

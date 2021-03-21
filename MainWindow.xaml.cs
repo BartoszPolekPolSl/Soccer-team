@@ -55,7 +55,11 @@ namespace Players
 
         private void bt_delete_Click(object sender, RoutedEventArgs e)
         {
-            if (lb_players.SelectedItem == null)
+            if (playerList.playersList.Count == 0)
+            {
+                MessageBox.Show("Lista jest pusta!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (lb_players.SelectedItem == null)
             {
                 MessageBox.Show("Wybierz pozycję, która chcesz usunąć z listy!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -114,14 +118,11 @@ namespace Players
             {
                 tb_fName.Foreground = Brushes.Black;
                 tb_lName.Foreground = Brushes.Black;
-                string[] dataPlayer;
-                string player = lb_players.Items.GetItemAt(lb_players.SelectedIndex).ToString().Replace(",", "");
-                Regex space = new Regex("[ ]+");
-                dataPlayer = space.Replace(player, " ").Split(' ');
-                tb_fName.Text = dataPlayer[0];
-                tb_lName.Text = dataPlayer[1];
-                cb_age.SelectedItem = Convert.ToInt32(dataPlayer[3]);
-                sd_weight.Value = Convert.ToDouble(dataPlayer[5]) / 10;
+                Player player = playerList.playersList[lb_players.SelectedIndex];
+                tb_fName.Text = player.Fname;
+                tb_lName.Text = player.Lname;
+                cb_age.SelectedItem = player.Age;
+                sd_weight.Value = player.Weight;
             }
 
             

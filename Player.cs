@@ -21,7 +21,7 @@
 
         public override string ToString()
         {
-            return $"{Fname} {Lname}, Wiek: {Age}, Waga: {Weight}";
+            return $"{Fname} {Lname}, Wiek: {Age}, Waga: {Weight} kg";
         }
     }
     
