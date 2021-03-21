@@ -173,6 +173,24 @@ namespace Players
             TextReader stream = new StreamReader("Players.xml");
             playerList=(PlayersList)xml.Deserialize(stream);
         }
+
+        private void tb_fName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(tb_fName.Text=="Podaj imię")
+            {
+                tb_fName.Foreground = Brushes.Black;
+                tb_fName.Text = "";
+            }
+        }
+
+        private void tb_lName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (tb_lName.Text == "Podaj nazwisko")
+            {
+                tb_lName.Foreground = Brushes.Black;
+                tb_lName.Text = "";
+            }
+        }
     }   
     
 
