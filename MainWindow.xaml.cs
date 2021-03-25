@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
@@ -26,7 +28,7 @@ namespace Players
             cb_age.ItemsSource = Age;
             
         }
-
+        
         public List<int> Age = new List<int>();
         void age_array()
         {
@@ -49,26 +51,31 @@ namespace Players
                 if (int.TryParse(tb_height.Text, out height))
                 {
                     Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value, height);
-                    bool ifExist;
+                    bool ifExist=true;
 
-                    foreach (var p in lb_players.Items)
+                    foreach (var p in playerList.playersList)
                     {
                         if (player.Equals(p))
                         {
-                            MessageBox.Show("Piłkarz już istnieje!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            ifExist = false;
+                            break;
                         }
-                        break;
+                        
                     }
-                    playerList.AddPlayer(player);
-
+                    if (ifExist==false)
+                    {
+                        MessageBox.Show("Piłkarz już istnieje!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        playerList.AddPlayer(player);
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Podałeś niepoprawny wzrost!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }  
-
-            
         }
 
         private void bt_delete_Click(object sender, RoutedEventArgs e)
@@ -109,37 +116,41 @@ namespace Players
                     if (int.TryParse(tb_height.Text, out height))
                     {
                         Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value, height);
-                        bool ifExist;
+                        bool ifExist = true;
 
-                        foreach (var p in lb_players.Items)
+                        foreach (var p in playerList.playersList)
                         {
                             if (player.Equals(p))
                             {
-                                MessageBox.Show("Piłkarz już istnieje!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+                                ifExist = false;
+                                break;
                             }
-                            break;
                         }
-                        if (lb_players.SelectedIndex == 0)
+                        if (ifExist == false)
                         {
-                            lb_players.SelectedIndex += 1;
-                            playerList.ModifyPlayer(index, player);
-                            lb_players.SelectedIndex -= 1;
+                            MessageBox.Show("Piłkarz już istnieje!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         else
                         {
-                            lb_players.SelectedIndex -= 1;
-                            playerList.ModifyPlayer(index, player);
-                            lb_players.SelectedIndex += 1;
+                            if (lb_players.SelectedIndex == 0)
+                            {
+                                lb_players.SelectedIndex += 1;
+                                playerList.ModifyPlayer(index, player);
+                                lb_players.SelectedIndex -= 1;
+                            }
+                            else
+                            {
+                                lb_players.SelectedIndex -= 1;
+                                playerList.ModifyPlayer(index, player);
+                                lb_players.SelectedIndex += 1;
+                            }
                         }
                     }
                     else
                     {
                         MessageBox.Show("Podałeś niepoprawny wzrost!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-
-
                 }
-
             }
         }
 
@@ -161,9 +172,6 @@ namespace Players
                 sd_weight.Value = player.Weight;
                 tb_height.Text = player.Height.ToString();
             }
-
-            
-
         }
 
         private void tb_lName_TextChanged(object sender, TextChangedEventArgs e)
@@ -180,7 +188,6 @@ namespace Players
                 tb_lName.BorderThickness = new Thickness(1);
                 tb_lName.BorderBrush = mySolidColorBrush;
             }
-            
         }
 
         private void tb_fName_TextChanged(object sender, TextChangedEventArgs e)
@@ -255,8 +262,14 @@ namespace Players
                 tb_height.Text = "";
             }
         }
-    }   
-    
 
+        private void bt_sort_Click(object sender, RoutedEventArgs e)
+        {
+            playerList.SortList();
+            lb_players.ItemsSource = playerList.playersList;
+
+
+        }
+    }   
 }
 

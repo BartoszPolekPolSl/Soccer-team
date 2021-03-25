@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Players
@@ -27,6 +29,11 @@ namespace Players
             RemovePlayer(index);
             playersList.Insert(index, player);
 
+        }
+        public void SortList()
+        {
+            playersList= new ObservableCollection<Player>(playersList.OrderBy(x => x.Fname).ToList());
+            
         }
 
     }

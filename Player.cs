@@ -32,10 +32,10 @@ namespace Players
         {
             var p = obj as Player;
             if (p.Fname != this.Fname) return false;
-            if (p.Lname == this.Lname) return false;
-            if (p.Age == this.Age) return false;
-            if (p.Weight == this.Weight) return false;
-            if (p.Height == this.Height) return false;
+            if (p.Lname != this.Lname) return false;
+            if (p.Age != this.Age) return false;
+            if (p.Weight != this.Weight) return false;
+            if (p.Height != this.Height) return false;
 
             return true;
         }

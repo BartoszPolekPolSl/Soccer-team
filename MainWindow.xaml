@@ -86,6 +86,11 @@
                     Height="20"
                     Content="Modyfikuj"
                     Click="bt_modify_Click"/>
+            <Button x:Name="bt_sort"
+                     Margin="50,10,100,10"
+                    Height="20"
+                    Content="Sortuj"
+                    Click="bt_sort_Click"/>
         </StackPanel>
         <ListBox  x:Name="lb_players" 
                   Grid.Column="2"
