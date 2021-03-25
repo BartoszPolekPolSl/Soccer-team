@@ -17,6 +17,7 @@
             <TextBlock Text="Nazwisko:" FontSize="15" Margin="10"/>
             <TextBlock Text="Wiek:" FontSize="15" Margin="10"/>
             <TextBlock Text="Waga:" FontSize="15" Margin="10"/>
+            <TextBlock Text="Wzrost:" FontSize="15" Margin="10"/>
         </StackPanel>
         <StackPanel Grid.Column="1" >
             <TextBox x:Name="tb_fName"
@@ -60,12 +61,21 @@
                            />
 
             </DockPanel>
+            <TextBox x:Name="tb_height"
+                     Margin="0,10,100,10"
+                     BorderBrush="Red"
+                     BorderThickness="5"
+                     Foreground="DarkGray"
+                     Text="Podaj wzrost"
+                     FontSize="15"
+                     ToolTip="Uzupełnij dane"
+                     GotFocus="tb_height_GotFocus"
+                     TextChanged="tb_height_TextChanged"/>
             <Button x:Name="bt_add"
                     Margin="50,10,100,10"
                     Height="20"
                     Content="Dodaj"
-                    Click="bt_add_Click"
-                    />
+                    Click="bt_add_Click"/>
             <Button x:Name="bt_delete"
                     Margin="50,10,100,10"
                     Height="20"

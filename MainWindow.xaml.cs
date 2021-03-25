@@ -39,15 +39,33 @@ namespace Players
 
         private void bt_add_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(tb_lName.Text) || string.IsNullOrEmpty(tb_fName.Text) || string.IsNullOrWhiteSpace(tb_lName.Text) || string.IsNullOrWhiteSpace(tb_fName.Text))
+            if (string.IsNullOrEmpty(tb_lName.Text) || string.IsNullOrEmpty(tb_fName.Text) || string.IsNullOrWhiteSpace(tb_lName.Text) || string.IsNullOrWhiteSpace(tb_fName.Text) || string.IsNullOrEmpty(tb_height.Text) || string.IsNullOrWhiteSpace(tb_height.Text))
             {
                 MessageBox.Show("Uzupełnij wszystkie pola!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
+                int height;
+                if (int.TryParse(tb_height.Text, out height))
+                {
+                    Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value, height);
+                    bool ifExist;
 
-                Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value);
-                playerList.AddPlayer(player);
+                    foreach (var p in lb_players.Items)
+                    {
+                        if (player.Equals(p))
+                        {
+                            MessageBox.Show("Piłkarz już istnieje!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        break;
+                    }
+                    playerList.AddPlayer(player);
+
+                }
+                else
+                {
+                    MessageBox.Show("Podałeś niepoprawny wzrost!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }  
 
             
@@ -87,25 +105,42 @@ namespace Players
                 }
                 else if(MessageBox.Show("Czy chcesz zmodyfikować wybranego piłkarza?", "Modyfikowanie piłkarza", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value);
-                    if (lb_players.SelectedIndex == 0)
+                    int height;
+                    if (int.TryParse(tb_height.Text, out height))
                     {
-                        lb_players.SelectedIndex += 1;
-                        playerList.ModifyPlayer(index, player);
-                        lb_players.SelectedIndex -= 1;
+                        Player player = new Player(tb_fName.Text, tb_lName.Text, (int)cb_age.SelectedItem, sd_weight.Value, height);
+                        bool ifExist;
+
+                        foreach (var p in lb_players.Items)
+                        {
+                            if (player.Equals(p))
+                            {
+                                MessageBox.Show("Piłkarz już istnieje!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                            break;
+                        }
+                        if (lb_players.SelectedIndex == 0)
+                        {
+                            lb_players.SelectedIndex += 1;
+                            playerList.ModifyPlayer(index, player);
+                            lb_players.SelectedIndex -= 1;
+                        }
+                        else
+                        {
+                            lb_players.SelectedIndex -= 1;
+                            playerList.ModifyPlayer(index, player);
+                            lb_players.SelectedIndex += 1;
+                        }
                     }
                     else
                     {
-                        lb_players.SelectedIndex -= 1;
-                        playerList.ModifyPlayer(index, player);
-                        lb_players.SelectedIndex += 1;
+                        MessageBox.Show("Podałeś niepoprawny wzrost!", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
+
                 }
-                
 
             }
-
-
         }
 
         private void lb_players_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -118,11 +153,13 @@ namespace Players
             {
                 tb_fName.Foreground = Brushes.Black;
                 tb_lName.Foreground = Brushes.Black;
+                tb_height.Foreground = Brushes.Black;
                 Player player = playerList.playersList[lb_players.SelectedIndex];
                 tb_fName.Text = player.Fname;
                 tb_lName.Text = player.Lname;
                 cb_age.SelectedItem = player.Age;
                 sd_weight.Value = player.Weight;
+                tb_height.Text = player.Height.ToString();
             }
 
             
@@ -161,6 +198,21 @@ namespace Players
                 tb_fName.BorderBrush = mySolidColorBrush;
             }
         }
+        private void tb_height_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tb_height.Text == "")
+            {
+                tb_height.BorderThickness = new Thickness(5);
+                tb_height.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
+                mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                tb_height.BorderThickness = new Thickness(1);
+                tb_height.BorderBrush = mySolidColorBrush;
+            }
+        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -192,6 +244,15 @@ namespace Players
             {
                 tb_lName.Foreground = Brushes.Black;
                 tb_lName.Text = "";
+            }
+        }
+
+        private void tb_height_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (tb_height.Text == "Podaj wzrost")
+            {
+                tb_height.Foreground = Brushes.Black;
+                tb_height.Text = "";
             }
         }
     }   
