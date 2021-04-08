@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,7 +27,10 @@ namespace Players
             lb_players.ItemsSource = playerList.playersList;
             age_array();
             cb_age.ItemsSource = Age;
-            
+            if (App.XBtnFlag==false)
+            {
+                loadStateOfApp();
+            }      
         }
         
         public List<int> Age = new List<int>();
@@ -183,8 +187,7 @@ namespace Players
             }
             else
             {
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                var mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 tb_lName.BorderThickness = new Thickness(1);
                 tb_lName.BorderBrush = mySolidColorBrush;
             }
@@ -199,8 +202,8 @@ namespace Players
             }
             else
             {
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                
+                var mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 tb_fName.BorderThickness = new Thickness(1);
                 tb_fName.BorderBrush = mySolidColorBrush;
             }
@@ -214,8 +217,8 @@ namespace Players
             }
             else
             {
-                SolidColorBrush mySolidColorBrush = new SolidColorBrush();
-                mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
+                
+                var mySolidColorBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFABADB3");
                 tb_height.BorderThickness = new Thickness(1);
                 tb_height.BorderBrush = mySolidColorBrush;
             }
@@ -231,9 +234,14 @@ namespace Players
 
         private void Deserialize()
         {
-            xml = new XmlSerializer(typeof(PlayersList));
-            TextReader stream = new StreamReader("Players.xml");
-            playerList=(PlayersList)xml.Deserialize(stream);
+            if (File.Exists("Players.xml"))
+            {
+                xml = new XmlSerializer(typeof(PlayersList));
+                TextReader stream = new StreamReader("Players.xml");
+                playerList = (PlayersList)xml.Deserialize(stream);
+                stream.Close();
+            }
+
         }
 
         private void tb_fName_GotFocus(object sender, RoutedEventArgs e)
@@ -269,6 +277,52 @@ namespace Players
             lb_players.ItemsSource = playerList.playersList;
 
 
+        }
+
+        private void bt_changeLangVersion_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxItem cbItem = (ComboBoxItem)cb_ChangeLan.SelectedItem;
+            string version = cbItem.Tag.ToString();
+            saveStateOfApp();
+            App.ChangeCulture(version);
+
+        }
+        public void saveStateOfApp()
+        {
+            var settings = Properties.Settings.Default;
+            settings.xWindowPosition = this.Left;
+            settings.yWindowPosition = this.Top;
+            settings.tbxName = tb_fName.Text;
+            settings.tbxSurname = tb_lName.Text;
+            settings.cbChangeLanSelectedIndex = cb_ChangeLan.SelectedIndex;
+            settings.cbAgeSelectedIndex = cb_age.SelectedIndex;
+            settings.sdWeightValue = sd_weight.Value;
+            settings.tbxHeight = tb_height.Text;
+            settings.Save();
+        }
+        public void loadStateOfApp()
+        {
+            var settings = Properties.Settings.Default;
+            //cbChangeLan.SelectedIndex = ustawienia.cbChangeLanSelectedIndex;
+
+            //ComboBoxItem cb = (ComboBoxItem)cbChangeLan.Items[1];
+            var culture = Thread.CurrentThread.CurrentCulture.Name;
+            switch (culture)
+            {
+                case "pl-PL": cb_ChangeLan.SelectedIndex = 0; break;
+                case "en-US": cb_ChangeLan.SelectedIndex = 1; break;
+                default: cb_ChangeLan.SelectedIndex = -1; break;
+            }
+            tb_fName.Text = settings.tbxName;
+            tb_lName.Text = settings.tbxSurname;
+            tb_height.Text = settings.tbxHeight;
+            cb_age.SelectedIndex = settings.cbAgeSelectedIndex;
+            sd_weight.Value = settings.sdWeightValue;
+            this.Left = settings.xWindowPosition;
+            this.Top = settings.yWindowPosition;
+            tb_fName.Foreground = Brushes.Black;
+            tb_lName.Foreground = Brushes.Black;
+            tb_height.Foreground = Brushes.Black;
         }
     }   
 }

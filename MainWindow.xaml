@@ -3,21 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:res="clr-namespace:Players.Properties"
         mc:Ignorable="d"
-        Title="Drużyna" Height="450" Width="800" Closing="Window_Closing">
+        Title="{x:Static res:Resources.WindowTitle}" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.05*" />
+        </Grid.RowDefinitions>
         <StackPanel Grid.Column="0">
-            <TextBlock Text="Imię:" FontSize="15"  Margin="10"/>
-            <TextBlock Text="Nazwisko:" FontSize="15" Margin="10"/>
-            <TextBlock Text="Wiek:" FontSize="15" Margin="10"/>
-            <TextBlock Text="Waga:" FontSize="15" Margin="10"/>
-            <TextBlock Text="Wzrost:" FontSize="15" Margin="10"/>
+            <TextBlock Text="{x:Static res:Resources.FirstName}" FontSize="15"  Margin="10"/>
+            <TextBlock Text="{x:Static res:Resources.LastName}" FontSize="15" Margin="10"/>
+            <TextBlock Text="{x:Static res:Resources.Age}" FontSize="15" Margin="10"/>
+            <TextBlock Text="{x:Static res:Resources.Weight}" FontSize="15" Margin="10"/>
+            <TextBlock Text="{x:Static res:Resources.Height}" FontSize="15" Margin="10"/>
         </StackPanel>
         <StackPanel Grid.Column="1" >
             <TextBox x:Name="tb_fName"
@@ -26,7 +30,7 @@
                      BorderBrush="Red"
                      BorderThickness="5"
                      TextChanged="tb_fName_TextChanged" 
-                     Text="Podaj imię"
+                     Text="{x:Static res:Resources.TypeFirstName}"
                      FontSize="15"
                      Foreground="DarkGray"
                      GotFocus="tb_fName_GotFocus"
@@ -39,11 +43,11 @@
                      BorderThickness="5"
                      FontSize="15"
                      Foreground="DarkGray"
-                     Text="Podaj nazwisko"
+                     Text="{x:Static res:Resources.TypeLastName}"
                      GotFocus="tb_lName_GotFocus"/>
             <ComboBox x:Name="cb_age"
                       SelectedIndex="19"
-                      Margin="0,10,170,10"/>
+                      Margin="0,10,170,10" />
             
             <DockPanel>
                 <Slider x:Name="sd_weight"
@@ -66,7 +70,7 @@
                      BorderBrush="Red"
                      BorderThickness="5"
                      Foreground="DarkGray"
-                     Text="Podaj wzrost"
+                     Text="{x:Static res:Resources.TypeHeight}"
                      FontSize="15"
                      ToolTip="Uzupełnij dane"
                      GotFocus="tb_height_GotFocus"
@@ -74,22 +78,22 @@
             <Button x:Name="bt_add"
                     Margin="50,10,100,10"
                     Height="20"
-                    Content="Dodaj"
+                    Content="{x:Static res:Resources.Add}"
                     Click="bt_add_Click"/>
             <Button x:Name="bt_delete"
                     Margin="50,10,100,10"
                     Height="20"
-                    Content="Usuń"
+                    Content="{x:Static res:Resources.Remove}"
                     Click="bt_delete_Click"/>
             <Button x:Name="bt_modify"
                    Margin="50,10,100,10"
                     Height="20"
-                    Content="Modyfikuj"
+                    Content="{x:Static res:Resources.Modify}"
                     Click="bt_modify_Click"/>
             <Button x:Name="bt_sort"
                      Margin="50,10,100,10"
                     Height="20"
-                    Content="Sortuj"
+                    Content="{x:Static res:Resources.Sort}"
                     Click="bt_sort_Click"/>
         </StackPanel>
         <ListBox  x:Name="lb_players" 
@@ -97,7 +101,26 @@
                   SelectionChanged="lb_players_SelectionChanged"
                   FontSize="15"
                  />
+        <ComboBox Grid.Row="1" x:Name="cb_ChangeLan" SelectedIndex="0" Margin="0,0,60,0">
+            <ComboBoxItem Tag="pl-PL">
+            <Image Source="flagi/pol.jpg" Height="10"/>
+            </ComboBoxItem>
+            <ComboBoxItem Tag="en-US">
+            <Image Source="flagi/usa.jpg" Height="10"/>
+            
+            </ComboBoxItem>
+        </ComboBox>
+        <TextBlock Grid.Row="1" 
+                   Margin="60,0,0,0" 
+                   Text="{x:Static res:Resources.Language}"  
+                   FontSize="15"/>
+        <Button x:Name="bt_changeLangVersion" Grid.Row="1" Grid.Column="2"
+                Content="{x:Static res:Resources.BtnChangeLang}"
+                Margin="250,0,0,0"
+                Click="bt_changeLangVersion_Click"/>
+
 
 
     </Grid>
+
 </Window>

@@ -31,3 +31,7 @@ C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.c
 C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.csproj.CopyComplete
 C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.exe
 C:\Users\Pc\Documents\Visual Studio 2019\Projekt\Soccer-team\obj\Debug\Players.pdb
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players_MarkupCompile.lref
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\bin\Debug\en-US\Players.resources.dll
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\en-US\Players.resources.dll
+D:\Studia\POiG\Lab1\WpfApp1\WpfApp1\obj\Debug\Players.Properties.Resources.en-US.resources
